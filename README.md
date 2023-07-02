@@ -1,4 +1,4 @@
-# AThea Beauty
+# Athea Beauty
 
 ## Tentang
 
