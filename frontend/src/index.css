@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary
+  }
+  h1 {
+    @apply text-2xl font-bold text-gray-700
+  }
+  h2 {
+    @apply text-xl font-semibold text-gray-800
+  }
+  h3 {
+    @apply text-lg font-medium text-gray-800
+  }
+  h4 {
+    @apply text-base text-gray-600
+  }
+  p {
+    @apply text-gray-500
+  }
+  main {
+    @apply h-[calc(100vh-64px)] p-6 overflow-y-scroll
+  }
+  input.form {
+    @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600
+  }
+  label {
+    @apply select-none
+  }
+  table {
+    @apply table-auto w-full mt-3
+  }
+  table
+  thead
+  th {
+    @apply text-left font-medium text-gray-700
+  }
+  table
+  tbody
+  td {
+    @apply text-gray-400
+  }
+}
+
+@layer components {
+  #search-box:has(input:focus) {
+    @apply ring-1 ring-blue-600
+  }
+  .card {
+    @apply p-5 rounded-lg bg-white shadow-md
+  }
+  .btn {
+    @apply px-4 py-2 rounded-md  font-semibold
+  }
+  .btn-primary {
+    @apply bg-blue-600 text-white active:ring-1 active:ring-blue-600
+    active:ring-offset-2
+  }
+}

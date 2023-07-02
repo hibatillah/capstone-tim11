@@ -52,6 +52,7 @@ recordRoutes.route("/produk/add").post(function (req, res) {
     harga: req.body.harga,
     warna: req.body.warna,
     berat: req.body.berat,
+    stok: req.body.stok,
     tanggalProduksi: req.body.tanggalProduksi,
     tanggalExpire: req.body.tanggalExpire,
   };
@@ -81,6 +82,7 @@ recordRoutes.route("/produk/update/:id").put(function (req, res) {
       harga: req.body.harga,
       warna: req.body.warna,
       berat: req.body.berat,
+      stok: req.body.stok,
       tanggalProduksi: req.body.tanggalProduksi,
       tanggalExpire: req.body.tanggalExpire,
     },

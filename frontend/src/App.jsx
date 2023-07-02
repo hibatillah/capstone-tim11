@@ -12,7 +12,7 @@ function App() {
   const handleLogin = () => setIsLogin(!isLogin);
 
   // user handle
-  const [user, setUser] = React.useState();
+  const [user, setUser] = React.useState('guest');
   const handleUser = (user) => setUser(user);
 
   return (
@@ -22,8 +22,8 @@ function App() {
         <Login handleLogin={handleLogin} />
       ) : (
         <div className="flex">
-          <Sidebar handleLogin={handleLogin} />
-          <div className="flex-auto min-h-screen px-6 py-2 overflow-y-scroll">
+          <Sidebar handleLogin={handleLogin} user={user} />
+          <main className="flex-auto">
             <Routes>
               {user === "admin" ? (
                 <>
@@ -44,7 +44,7 @@ function App() {
                 </>
               )}
             </Routes>
-          </div>
+          </main>
         </div>
       )}
     </Router>
