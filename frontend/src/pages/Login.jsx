@@ -1,11 +1,13 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   // login state
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   // submit handle
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -13,6 +15,8 @@ const Login = () => {
       password,
     };
     console.log({ data });
+    handleLogin()
+    navigate('/')
   };
 
   return (
@@ -32,6 +36,7 @@ const Login = () => {
               placeholder="Masukkan email"
               className="form"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="w-full flex flex-col gap-1">
@@ -43,6 +48,7 @@ const Login = () => {
               placeholder="Masukkan password"
               className="form"
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <button type="submit" className="btn btn-primary w-full">

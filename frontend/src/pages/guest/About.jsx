@@ -1,9 +1,8 @@
 import React from "react";
 import { products } from "../../assets/img";
+import { Bio } from "../../components";
 
 const About = () => {
-  const medsos = [];
-
   return (
     <>
       <h1>About Us</h1>
@@ -31,47 +30,8 @@ const About = () => {
             jadi yang sudah dibuat.
           </p>
         </div>
-        {/* info */}
-        <div className="col-span-1">
-          <div className="card">
-            <h3>Info</h3>
-            <div className="grid grid-cols-[auto_1fr] gap-x-8 gap-y-2 mt-4">
-              <p>Corporate Name</p>
-              <p className="text-gray-700">Ravella Beauty Indonesia</p>
-              <p>City</p>
-              <p className="text-gray-700">Pekanbaru</p>
-              <p>Address</p>
-              <p className="text-gray-700">Jalan Lele No. 18</p>
-              <p>Phone</p>
-              <p className="text-gray-700">082268485930</p>
-            </div>
-            <div className="card">
-              <h3>Stay Connected</h3>
-              <div className="mt-4 space-y-2">
-                <a
-                  href="https://www.instagram.com/atheabeaute/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p className="text-gray-700">atheabeauty_official</p>
-                </a>
-                <a
-                  href="https://shopee.co.id/atheabeauty"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p className="text-gray-700">Athea Beauty</p>
-                </a>
-                <a
-                  href="https://www.tiktok.com/@atheabeauty"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p className="text-gray-700">atheabeauty</p>
-                </a>
-              </div>
-            </div>
-          </div>
+        <div className="col-span-1 space-y-6">
+          <Bio />
         </div>
       </div>
     </>

@@ -22,7 +22,7 @@
     @apply text-gray-500
   }
   main {
-    @apply h-[calc(100vh-64px)] p-6 overflow-y-scroll
+    @apply h-[calc(100vh-65px)] p-6 overflow-y-scroll
   }
   input.form {
     @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600
@@ -42,6 +42,9 @@
   tbody
   td {
     @apply text-gray-400
+  }
+  *::-webkit-scrollbar {
+    @apply w-2;
   }
 }
 

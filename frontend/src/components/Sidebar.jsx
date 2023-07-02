@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { DashboardIcon, OrderIcon, ReportIcon, ProductIcon, LogoutIcon } from "./icon";
+import { DashboardIcon, OrderIcon, ReportIcon, ProductIcon, LogoutIcon, UserIcon } from "./icon";
 
 const Sidebar = ({ user, handleLogin }) => {
   const menu = {
@@ -30,7 +30,7 @@ const Sidebar = ({ user, handleLogin }) => {
   }
 
   return (
-    <aside className="flex-none min-w-[15%] h-[calc(100vh-64px)] px-6 py-10 flex flex-col items-center bg-white shadow-md">
+    <aside className="flex-none min-w-[15%] h-[calc(100vh-65px)] px-6 py-10 flex flex-col items-center bg-white shadow-md">
       <ul className="flex flex-col gap-3">
         {acitveUser.map(([path, page], i) => (
           <NavLink
@@ -78,7 +78,7 @@ const Sidebar = ({ user, handleLogin }) => {
                       case "Detail":
                         return <OrderIcon />;
                       case "About":
-                        return <ReportIcon />;
+                        return <UserIcon />;
                       default:
                         return null;
                     }

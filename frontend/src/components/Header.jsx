@@ -4,7 +4,7 @@ import { logo } from "../assets/img";
 const Header = () => {
   return (
     <header className="w-full px-4 py-2 flex justify-between bg-white shadow-md border-b border-gray-400">
-      <div className="flex items-center gap-16">
+      <div className="flex items-center gap-12">
         <a href="/" className="flex items-center gap-4">
           <img src={logo} alt="logo" className="w-12 h-12 rounded-full" />
           <h2>Athea Beauty</h2>
@@ -37,8 +37,8 @@ const Header = () => {
           </svg>
         </label>
       </div>
-      <div className="flex items-center gap-5">
-        <div className="w-10 h-10 rounded-full bg-gray-500" />
+      <div className="flex items-center gap-3">
+        <div className="w-9 h-9 rounded-full bg-gray-500" />
         <h4>Admin</h4>
       </div>
     </header>
