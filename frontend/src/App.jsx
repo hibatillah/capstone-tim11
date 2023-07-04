@@ -8,11 +8,11 @@ import { Login } from "./pages";
 
 function App() {
   // login handle
-  const [isLogin, setIsLogin] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(true);
   const handleLogin = () => setIsLogin(!isLogin);
 
   // user handle
-  const [user, setUser] = React.useState('guest');
+  const [user, setUser] = React.useState('admin');
   const handleUser = (user) => setUser(user);
 
   return (

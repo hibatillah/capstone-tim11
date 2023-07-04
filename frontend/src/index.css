@@ -7,16 +7,16 @@
     @apply bg-primary
   }
   h1 {
-    @apply text-2xl font-bold text-gray-700
+    @apply text-2xl font-bold text-blue-900
   }
   h2 {
-    @apply text-xl font-semibold text-gray-800
+    @apply text-xl font-semibold text-blue-900
   }
   h3 {
-    @apply text-lg font-medium text-gray-800
+    @apply text-lg font-medium text-blue-900
   }
   h4 {
-    @apply text-base text-gray-600
+    @apply text-base text-blue-800
   }
   p {
     @apply text-gray-500
@@ -36,12 +36,12 @@
   table
   thead
   th {
-    @apply text-left font-medium text-gray-700
+    @apply text-left font-medium text-gray-500 pb-3
   }
   table
   tbody
   td {
-    @apply text-gray-400
+    @apply text-gray-700 font-medium py-2
   }
   *::-webkit-scrollbar {
     @apply w-2;
@@ -53,7 +53,7 @@
     @apply ring-1 ring-blue-600
   }
   .card {
-    @apply p-5 rounded-lg bg-white shadow-md
+    @apply p-5 rounded-md bg-white shadow-md
   }
   .btn {
     @apply px-4 py-2 rounded-md  font-semibold

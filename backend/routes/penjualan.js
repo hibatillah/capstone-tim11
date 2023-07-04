@@ -54,6 +54,7 @@ recordRoutes.route("/penjualan/add").post(function (req, res) {
     pembayaran: req.body.pembayaran,
     pengiriman: req.body.pengiriman,
     pembeli: req.body.pembeli,
+    status: req.body.status,
   };
   db_connect
     .collection("penjualan")
@@ -83,6 +84,7 @@ recordRoutes.route("/penjualan/update/:id").put(function (req, res) {
       pembayaran: req.body.pembayaran,
       pengiriman: req.body.pengiriman,
       pembeli: req.body.pembeli,
+      status: req.body.status,
     },
   };
   db_connect

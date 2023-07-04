@@ -12,7 +12,7 @@ const Header = () => {
         <label
           htmlFor="search"
           id="search-box"
-          className="flex items-center gap-3 py-2 pl-3 pr-2 rounded-md cursor-text border border-gray-400"
+          className="flex items-center gap-3 py-1.5 pl-3 pr-2 rounded-md cursor-text border border-gray-400"
         >
           <input
             type="search"
