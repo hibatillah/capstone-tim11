@@ -1,6 +1,7 @@
 import React from "react";
 import { formatRupiah } from "../../components/format";
 import { cart, people, usd } from "../../assets/icons";
+import { brickCinnamon, darkWine } from "../../assets/img";
 
 const ScoreCard = () => {
   return (
@@ -115,6 +116,48 @@ const DashboardAdmin = () => {
                     </td>
                   </tr>
                 )) ?? <tr>Transaksi tidak tersedia</tr>}
+              </tbody>
+            </table>
+          </div>
+          <div className="card">
+            <h3>Top Selling</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Preview</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Sold</th>
+                  <th>Pendapatan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="flex gap-5 items-center">
+                    <img
+                      src={brickCinnamon}
+                      alt="brick-cinnamon"
+                      className="w-14 h-14 rounded bg-cover"
+                    />
+                  </td>
+                  <td className="text-blue-600">Athea - Vintage Rose</td>
+                  <td>{formatRupiah(64000)}</td>
+                  <td>124</td>
+                  <td>{formatRupiah(7936000)}</td>
+                </tr>
+                <tr>
+                  <td className="flex gap-5 items-center">
+                    <img
+                      src={darkWine}
+                      alt="dark-wine"
+                      className="w-14 h-14 rounded bg-cover"
+                    />
+                  </td>
+                  <td className="text-blue-600">Athea - Apple Red</td>
+                  <td>{formatRupiah(65000)}</td>
+                  <td>98</td>
+                  <td>{formatRupiah(4420000)}</td>
+                </tr>
               </tbody>
             </table>
           </div>

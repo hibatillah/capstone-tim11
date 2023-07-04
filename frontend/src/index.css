@@ -13,7 +13,7 @@
     @apply text-xl font-semibold text-blue-900
   }
   h3 {
-    @apply text-lg font-medium text-blue-900
+    @apply text-lg font-medium text-blue-800
   }
   h4 {
     @apply text-base text-blue-800
@@ -24,9 +24,6 @@
   main {
     @apply h-[calc(100vh-65px)] p-6 overflow-y-scroll
   }
-  input.form {
-    @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600
-  }
   label {
     @apply select-none
   }
@@ -36,15 +33,18 @@
   table
   thead
   th {
-    @apply text-left font-medium text-gray-500 pb-3
+    @apply text-left font-medium text-gray-700 pb-3
   }
   table
   tbody
   td {
-    @apply text-gray-700 font-medium py-2
+    @apply text-gray-600 py-2
   }
   *::-webkit-scrollbar {
     @apply w-2;
+  }
+  select {
+    @apply cursor-pointer
   }
 }
 
@@ -59,7 +59,14 @@
     @apply px-4 py-2 rounded-md  font-semibold
   }
   .btn-primary {
-    @apply bg-blue-600 text-white active:ring-1 active:ring-blue-600
+    @apply bg-blue-500 text-white active:ring-1 active:ring-blue-600
     active:ring-offset-2
+  }
+  .btn-secondary {
+    @apply bg-inherit text-blue-500 border border-blue-500 active:ring-1 active:ring-blue-600
+    active:ring-offset-2
+  }
+  .form {
+    @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600
   }
 }

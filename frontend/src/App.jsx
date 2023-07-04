@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header, Sidebar } from "./components";
-import { DashboardAdmin, Order, Report, Product } from "./pages/admin";
+import { DashboardAdmin, Order, Report, Product, AddProduct } from "./pages/admin";
 import { DashboardSupplier } from "./pages/supplier";
 import { DashboardGuest, Detail, About } from "./pages/guest";
 import { Login } from "./pages";
@@ -31,6 +31,7 @@ function App() {
                   <Route path="/order" element={<Order />} />
                   <Route path="/report" element={<Report />} />
                   <Route path="/product" element={<Product />} />
+                  <Route path="/product/add" element={<AddProduct />} />
                 </>
               ) : user === "supplier" ? (
                 <>
