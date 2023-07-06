@@ -5,6 +5,7 @@ import { DashboardAdmin, Order, Report, Product, AddProduct } from "./pages/admi
 import { DashboardSupplier } from "./pages/supplier";
 import { DashboardGuest, Detail, About } from "./pages/guest";
 import { Login } from "./pages";
+import Register from "./pages/Register";
 
 function App() {
   // login handle
@@ -17,11 +18,15 @@ function App() {
 
   return (
     <Router>
-      <Header />
       {!isLogin ? (
-        <Login handleLogin={handleLogin} />
-      ) : (
-        <div className="flex">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        ) : (
+          <>
+          <Header />
+          <div className="flex">
           <Sidebar handleLogin={handleLogin} user={user} />
           <main className="flex-auto">
             <Routes>
@@ -47,6 +52,7 @@ function App() {
             </Routes>
           </main>
         </div>
+        </>
       )}
     </Router>
   );
