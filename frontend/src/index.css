@@ -46,6 +46,9 @@
   select {
     @apply cursor-pointer
   }
+  input {
+    @apply focus:outline-none
+  }
 }
 
 @layer components {

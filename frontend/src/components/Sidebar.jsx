@@ -1,6 +1,15 @@
 import React from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import { DashboardIcon, OrderIcon, ReportIcon, ProductIcon, LogoutIcon, UserIcon } from "./icon";
+import {
+  DashboardIcon,
+  OrderIcon,
+  ReportIcon,
+  ProductIcon,
+  LogoutIcon,
+  UserIcon,
+  BahanBakuIcon,
+  Basket,
+} from "./icon";
 
 const Sidebar = ({ user, handleLogin }) => {
   const menu = {
@@ -9,11 +18,17 @@ const Sidebar = ({ user, handleLogin }) => {
       ["/order", "Order"],
       ["/report", "Report"],
       ["/product", "Product"],
+      ["/bahanbaku", "Bahan Baku"],
     ],
-    supplier: [["/", "Dashboard"]],
+    supplier: [
+      ["/", "Dashboard"],
+      ["/pesanan", "Pesanan"],
+
+    ],
     guest: [
       ["/", "Dashboard"],
       ["/detail", "Detail"],
+      ["/ordercustomer", "Order"],
       ["/about", "About"],
     ],
   };
@@ -26,8 +41,8 @@ const Sidebar = ({ user, handleLogin }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     handleLogin();
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   return (
     <aside className="flex-none min-w-[15%] h-[calc(100vh-65px)] px-6 py-10 flex flex-col items-center bg-white shadow-md">
@@ -58,6 +73,8 @@ const Sidebar = ({ user, handleLogin }) => {
                         return <ReportIcon />;
                       case "Product":
                         return <ProductIcon />;
+                      case "Bahan Baku":
+                        return <BahanBakuIcon />;
                       default:
                         return null;
                     }
@@ -67,6 +84,8 @@ const Sidebar = ({ user, handleLogin }) => {
                     switch (page) {
                       case "Dashboard":
                         return <DashboardIcon />;
+                      case "Pesanan":
+                        return <OrderIcon />;
                       default:
                         return null;
                     }
@@ -76,6 +95,8 @@ const Sidebar = ({ user, handleLogin }) => {
                       case "Dashboard":
                         return <DashboardIcon />;
                       case "Detail":
+                        return <OrderIcon />;
+                      case "Order":
                         return <OrderIcon />;
                       case "About":
                         return <UserIcon />;
@@ -89,7 +110,10 @@ const Sidebar = ({ user, handleLogin }) => {
           </NavLink>
         ))}
       </ul>
-      <Link onClick={handleLogout} className="mt-auto px-3 py-2 rounded-md flex items-center gap-3 bg-inherit text-gray-800 stroke-gray-900 active:text-blue-600 active:stroke-blue-600">
+      <Link
+        onClick={handleLogout}
+        className="mt-auto px-3 py-2 rounded-md flex items-center gap-3 bg-inherit text-gray-800 stroke-gray-900 active:text-blue-600 active:stroke-blue-600"
+      >
         <LogoutIcon />
         Log Out
       </Link>

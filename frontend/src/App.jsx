@@ -6,6 +6,9 @@ import { DashboardSupplier } from "./pages/supplier";
 import { DashboardGuest, Detail, About } from "./pages/guest";
 import { Login } from "./pages";
 import Register from "./pages/Register";
+import BahanBaku from "./pages/admin/BahanBaku";
+import OrderGuest from "./pages/guest/OrderGuest";
+import PesananSupplier from "./pages/supplier/PesananSupplier";
 
 function App() {
   // login handle
@@ -13,7 +16,7 @@ function App() {
   const handleLogin = () => setIsLogin(!isLogin);
 
   // user handle
-  const [user, setUser] = React.useState('admin');
+  const [user, setUser] = React.useState('supplier');
   const handleUser = (user) => setUser(user);
 
   return (
@@ -36,16 +39,19 @@ function App() {
                   <Route path="/order" element={<Order />} />
                   <Route path="/report" element={<Report />} />
                   <Route path="/product" element={<Product />} />
+                  <Route path="/bahanbaku" element={<BahanBaku />} />
                   <Route path="/product/add" element={<AddProduct />} />
                 </>
               ) : user === "supplier" ? (
                 <>
                   <Route path="/" element={<DashboardSupplier />} />
+                  <Route path="/pesanan" element={<PesananSupplier />} />
                 </>
               ) : (
                 <>
                   <Route path="/" element={<DashboardGuest />} />
                   <Route path="/detail" element={<Detail />} />
+                  <Route path="/ordercustomer" element={<OrderGuest />} />
                   <Route path="/about" element={<About />} />
                 </>
               )}

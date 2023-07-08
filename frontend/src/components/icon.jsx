@@ -14,7 +14,7 @@ export const DashboardIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export const OrderIcon = () => {
   return (
@@ -32,7 +32,7 @@ export const OrderIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export const ReportIcon = () => {
   return (
@@ -50,7 +50,7 @@ export const ReportIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export const ProductIcon = () => {
   return (
@@ -68,7 +68,7 @@ export const ProductIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export const LogoutIcon = () => {
   return (
@@ -87,7 +87,7 @@ export const LogoutIcon = () => {
       />
     </svg>
   );
-}
+};
 
 export const UserIcon = () => {
   return (
@@ -106,4 +106,34 @@ export const UserIcon = () => {
       />
     </svg>
   );
-}
+};
+
+export const BahanBakuIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-box2"
+      viewBox="0 0 16 16"
+    >
+      <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6V1Zm1 0v3h6l-2.25-3H8.5ZM15 5H1v10h14V5Z" />
+    </svg>
+  );
+};
+
+export const Basket = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-cart2"
+      viewBox="0 0 16 16"
+    >
+      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+    </svg>
+  );
+};
