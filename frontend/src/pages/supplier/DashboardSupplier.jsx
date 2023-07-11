@@ -6,7 +6,7 @@ const DashboardSupplier = () => {
   return (
     <>
       <h1>DashBoard</h1>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-6 mt-5">
         <div className="col-span-2 space-y-6">
           <div className="card">
             <h3>Top Selling</h3>

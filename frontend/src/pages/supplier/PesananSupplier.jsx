@@ -4,10 +4,10 @@ const PesananSupplier = () => {
   return (
     <div>
         <h1>Pesanan</h1>
-        <div className='card min-h-[200px] mb-5 mt-5'>
+        <div className='card min-h-[300px] mb-5 mt-5'>
             <h2>Pesanan Berlangsung</h2>
         </div>
-        <div className='card min-h-[200px]'>
+        <div className='card min-h-[300px]'>
             <h2>Pesanan Selesai</h2>
         </div>
     </div>

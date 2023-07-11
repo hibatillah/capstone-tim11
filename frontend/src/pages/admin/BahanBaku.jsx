@@ -5,7 +5,7 @@ const BahanBaku = () => {
   return (
     <div>
       <h1>Bahan Baku</h1>
-      <div className="mt-5 card">
+      <div className="mt-5 card min-h-[300px]">
         <div className="flex bg-slate-100 w-72 items-center py-2 rounded-lg">
           <div className="stroke-slate-500">
             <svg

@@ -8,7 +8,6 @@ import {
   LogoutIcon,
   UserIcon,
   BahanBakuIcon,
-  Basket,
 } from "./icon";
 
 const Sidebar = ({ user, handleLogin }) => {
@@ -27,27 +26,26 @@ const Sidebar = ({ user, handleLogin }) => {
     ],
     guest: [
       ["/", "Dashboard"],
-      ["/detail", "Detail"],
       ["/ordercustomer", "Order"],
+      ["/detail", "Detail"],
       ["/about", "About"],
     ],
   };
 
   // active menu
-  const acitveUser = menu[user];
   const [activeMenu, setActiveMenu] = React.useState();
 
   // lagoout handle
   const navigate = useNavigate();
   const handleLogout = () => {
-    handleLogin();
+    handleLogin(false);
     navigate("/");
   };
 
   return (
     <aside className="flex-none min-w-[15%] h-[calc(100vh-65px)] px-6 py-10 flex flex-col items-center bg-white shadow-md">
       <ul className="flex flex-col gap-3">
-        {acitveUser.map(([path, page], i) => (
+        {menu[user].map(([path, page], i) => (
           <NavLink
             key={i}
             to={path}

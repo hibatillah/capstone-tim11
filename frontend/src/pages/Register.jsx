@@ -2,25 +2,33 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import Foto from "../assets/img/image1.png";
 import { Link } from "react-router-dom";
-const Register = ({ handleLogin }) => {
-  // regis state
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setconfirmPassword] = React.useState("");
-  const [firstName, setfirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
+import axios from "axios";
 
-  // submit handle
+const Register = ({ handleLogin }) => {
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
-      email,
-      password,
+      firstName: e.target.firstname.value,
+      lastName: e.target.lastname.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
     };
-    console.log({ data });
-    handleLogin();
-    navigate("/");
+
+    if (e.target.password.value === e.target.confirmPassword.value) {
+      axios
+        .post("http://localhost:5000/user/add", data)
+        .then((res) => {
+          console.log(res.data);
+          navigate("/");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      alert("Password tidak sama");
+      e.target.reset()
+    }
   };
 
   return (
@@ -46,7 +54,6 @@ const Register = ({ handleLogin }) => {
               id="firstname"
               placeholder="Masukkan first name"
               className="form"
-              onChange={(e) => setfirstName(e.target.value)}
               required
             />
           </div>
@@ -60,7 +67,6 @@ const Register = ({ handleLogin }) => {
               id="lastname"
               placeholder="Masukkan last name"
               className="form"
-              onChange={(e) => setLastName(e.target.value)}
               required
             />
           </div>
@@ -74,7 +80,6 @@ const Register = ({ handleLogin }) => {
               id="email"
               placeholder="Masukkan email"
               className="form"
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -88,21 +93,19 @@ const Register = ({ handleLogin }) => {
               id="password"
               placeholder="Masukkan password"
               className="form"
-              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label htmlFor="password" className="font-bold">
+            <label htmlFor="confirmPassword" className="font-bold">
               Confirm Password
             </label>
             <input
-              type="confirmpassword"
-              name="confirmpassword"
-              id="confirmpassword"
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
               placeholder="Masukkan confirm password"
               className="form"
-              onChange={(e) => setconfirmPassword(e.target.value)}
               required
             />
           </div>
@@ -113,12 +116,12 @@ const Register = ({ handleLogin }) => {
             >
               Submit
             </button>
-            <button
-              type="submit"
+            <Link
+              to="/"
               className="bg-emerald-200 px-4 py-1 text-red-400 rounded-lg"
             >
               Cancel
-            </button>
+            </Link>
           </div>
         </form>
       </div>

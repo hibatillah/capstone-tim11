@@ -13,10 +13,10 @@ import PesananSupplier from "./pages/supplier/PesananSupplier";
 function App() {
   // login handle
   const [isLogin, setIsLogin] = React.useState(true);
-  const handleLogin = () => setIsLogin(!isLogin);
+  const handleLogin = (id) => setIsLogin(id);
 
   // user handle
-  const [user, setUser] = React.useState('supplier');
+  const [user, setUser] = React.useState('guest');
   const handleUser = (user) => setUser(user);
 
   return (
