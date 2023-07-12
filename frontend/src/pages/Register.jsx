@@ -4,17 +4,17 @@ import Foto from "../assets/img/image1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Register = ({ handleLogin }) => {
+const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = {
-      firstName: e.target.firstname.value,
-      lastName: e.target.lastname.value,
+      username: e.target.username.value,
       email: e.target.email.value,
       password: e.target.password.value,
+      role: e.target.role.value,
     };
 
     if (e.target.password.value === e.target.confirmPassword.value) {
@@ -22,7 +22,7 @@ const Register = ({ handleLogin }) => {
         .post("http://localhost:5000/user/add", data)
         .then((res) => {
           console.log(res.data);
-          navigate("/");
+          setTimeout(() => navigate('/'), 1000)
         })
         .catch((err) => console.log(err));
     } else {
@@ -45,27 +45,14 @@ const Register = ({ handleLogin }) => {
         </p>
         <form onSubmit={handleSubmit} className="mt-5 space-y-5">
           <div className="w-full flex flex-col gap-1">
-            <label htmlFor="email" className="font-bold">
-              First Name
+            <label htmlFor="username" className="font-bold">
+              Username
             </label>
             <input
-              type="firstname"
-              name="firstname"
-              id="firstname"
-              placeholder="Masukkan first name"
-              className="form"
-              required
-            />
-          </div>
-          <div className="w-full flex flex-col gap-1">
-            <label htmlFor="password" className="font-bold">
-              Last Name
-            </label>
-            <input
-              type="lastname"
-              name="lastname"
-              id="lastname"
-              placeholder="Masukkan last name"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Masukkan username"
               className="form"
               required
             />
@@ -108,6 +95,16 @@ const Register = ({ handleLogin }) => {
               className="form"
               required
             />
+          </div>
+          <div className="w-full flex flex-col gap-1">
+            <label htmlFor="role" className="font-bold">
+              Select Role
+            </label>
+            <select name="role" id="role" className="form" required>
+              <option value="guest">Guest</option>
+              <option value="admin">Admin</option>
+              <option value="supplier">Supplier</option>
+            </select>
           </div>
           <div className="flex gap-5">
             <button
