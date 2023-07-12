@@ -10,7 +10,7 @@ import {
   BahanBakuIcon,
 } from "./icon";
 
-const Sidebar = ({ user, handleLogin }) => {
+const Sidebar = ({ user, handleLogin, handleUser }) => {
   const menu = {
     admin: [
       ["/", "Dashboard"],
@@ -38,14 +38,15 @@ const Sidebar = ({ user, handleLogin }) => {
   // lagoout handle
   const navigate = useNavigate();
   const handleLogout = () => {
-    handleLogin(false);
     navigate("/");
+    handleUser("", "", "");
+    handleLogin();
   };
 
   return (
     <aside className="flex-none min-w-[15%] h-[calc(100vh-65px)] px-6 py-10 flex flex-col items-center bg-white shadow-md">
       <ul className="flex flex-col gap-3">
-        {menu[user].map(([path, page], i) => (
+        {menu[user.role].map(([path, page], i) => (
           <NavLink
             key={i}
             to={path}
@@ -60,7 +61,7 @@ const Sidebar = ({ user, handleLogin }) => {
                   : "bg-inherit text-gray-800 stroke-gray-900 active:text-blue-600 active:stroke-blue-600"
               }`}
             >
-              {user === "admin"
+              {user.role === "admin"
                 ? (() => {
                     switch (page) {
                       case "Dashboard":
@@ -77,7 +78,7 @@ const Sidebar = ({ user, handleLogin }) => {
                         return null;
                     }
                   })()
-                : user === "supplier"
+                : user.role === "supplier"
                 ? (() => {
                     switch (page) {
                       case "Dashboard":
@@ -108,13 +109,13 @@ const Sidebar = ({ user, handleLogin }) => {
           </NavLink>
         ))}
       </ul>
-      <Link
+      <div
         onClick={handleLogout}
-        className="mt-auto px-3 py-2 rounded-md flex items-center gap-3 bg-inherit text-gray-800 stroke-gray-900 active:text-blue-600 active:stroke-blue-600"
+        className="mt-auto px-3 py-2 rounded-md flex items-center gap-3 bg-inherit text-gray-800 stroke-gray-900 active:text-blue-600 active:stroke-blue-600 cursor-pointer"
       >
         <LogoutIcon />
         Log Out
-      </Link>
+      </div>
     </aside>
   );
 };

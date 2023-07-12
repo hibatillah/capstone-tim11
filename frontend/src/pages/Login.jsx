@@ -2,22 +2,42 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import Foto from "../assets/img/image1.png";
 import { Link } from "react-router-dom";
-const Login = ({ handleLogin }) => {
-  // login state
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+import { GetData } from "../components/api";
 
-  // submit handle
+const User = () => {
+  const { users } = GetData("http://localhost:5000/user");
+  console.log(users);
+  return users;
+};
+
+const Login = ({ handleLogin, handleUser }) => {
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const dataUser = User();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     const data = {
-      email,
-      password,
+      email: event.target.email.value,
+      password: event.target.password.value,
     };
-    console.log({ data });
-    handleLogin();
-    navigate("/");
+
+    if (
+      dataUser?.data.some(
+        (item) => item.email === data.email && item.password === data.password
+      )
+    ) {
+      const user = dataUser.data.find(
+        (item) => item.email === data.email && item.password === data.password
+      );
+      handleLogin();
+      handleUser(user._id, user.name, user.role);
+      console.log("login success");
+      navigate("/");
+    } else {
+      alert("Email atau password salah");
+      event.target.reset();
+    }
   };
 
   return (
@@ -43,7 +63,6 @@ const Login = ({ handleLogin }) => {
               id="email"
               placeholder="Masukkan email"
               className="form"
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -57,7 +76,6 @@ const Login = ({ handleLogin }) => {
               id="password"
               placeholder="Masukkan password"
               className="form"
-              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <div className="flex justify-end">

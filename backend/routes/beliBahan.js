@@ -6,94 +6,90 @@ const ObjectId = require("mongodb").ObjectId;
 recordRoutes.use(express.urlencoded({ extended: true }));
 
 // menampilkan data
-recordRoutes.route("/penjualan").get(function (req, res) {
+recordRoutes.route("/belibahan").get(function (req, res) {
   let db_connect = dbo.getDb("athea");
   db_connect
-    .collection("penjualan")
+    .collection("beliBahan")
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
     })
     .then((data) => {
-      console.log('penjualan berhasil ditampilkan')
+      console.log('beli bahan berhasil ditampilkan')
       res.json({
-        message: "penjualan berhasil ditampilkan",
+        message: "beli bahan berhasil ditampilkan",
         data: data,
       });
     });
 });
 
 // menampilkan data by id
-recordRoutes.route("/penjualan/:id").get(function (req, res) {
+recordRoutes.route("/belibahan/:id").get(function (req, res) {
   let db_connect = dbo.getDb("athea");
   let myquery = { _id: new ObjectId(req.params.id) };
   db_connect
-    .collection("penjualan")
+    .collection("beliBahan")
     .findOne(myquery, function (err, result) {
       if (err) throw err;
       res.json(result);
     })
     .then((data) => {
-      console.log('penjualan berhasil ditampilkan')
+      console.log('beli bahan berhasil ditampilkan')
       res.json({
-        message: "penjualan berhasil ditampilkan",
+        message: "beli bahan berhasil ditampilkan",
         data: data,
       });
     });
 });
 
 // menambahkan data
-recordRoutes.route("/penjualan/add").post(function (req, res) {
+recordRoutes.route("/belibahan/add").post(function (req, res) {
   let db_connect = dbo.getDb("athea");
   let myObj = {
-    produk: req.body.produk,
+    datetime: req.body.datetime,
+    bahan: req.body.bahan,
+    supplier: req.body.supplier,
     jumlah: req.body.jumlah,
-    total: req.body.total,
-    tanggal: req.body.tanggal,
-    pembayaran: req.body.pembayaran,
-    pembeli: req.body.pembeli,
     status: req.body.status,
   };
   db_connect
-    .collection("penjualan")
+    .collection("beliBahan")
     .insertOne(myObj, function (err, result) {
       if (err) throw err;
       res.json(result);
     })
     .then(() => {
-      console.log('penjualan berhasil ditambahkan')
+      console.log('beli bahan berhasil ditambahkan')
       res.json({
-        message: "penjualan berhasil ditambahkan",
+        message: "beli bahan berhasil ditambahkan",
         data: myObj,
       });
     });
 });
 
 // mengupdate data
-recordRoutes.route("/penjualan/update/:id").put(function (req, res) {
+recordRoutes.route("/belibahan/update/:id").put(function (req, res) {
   let db_connect = dbo.getDb("athea");
   let myquery = { _id: new ObjectId(req.params.id) };
   let newValues = {
     $set: {
-      produk: req.body.produk,
+      datetime: req.body.datetime,
+      bahan: req.body.bahan,
+      supplier: req.body.supplier,
       jumlah: req.body.jumlah,
-      total: req.body.total,
-      tanggal: req.body.tanggal,
-      pembayaran: req.body.pembayaran,
-      pembeli: req.body.pembeli,
       status: req.body.status,
     },
   };
   db_connect
-    .collection("penjualan")
+    .collection("beliBahan")
     .updateOne(myquery, newValues, function (err, result) {
       if (err) throw err;
-      console.log("berhasil update penjualan");
+      console.log("berhasil update bahanbaku");
       res.json(result);
     })
     .then(() => {
-      console.log("berhasil update penjualan");
+      console.log("berhasil update bahanbaku");
       res.json({
         message: "Data berhasil diupdate",
         data: newValues,
@@ -102,20 +98,20 @@ recordRoutes.route("/penjualan/update/:id").put(function (req, res) {
 });
 
 // menghapus data
-recordRoutes.route("/penjualan/delete/:id").delete(function (req, res) {
+recordRoutes.route("/belibahan/delete/:id").delete(function (req, res) {
   let db_connect = dbo.getDb("athea");
   let myquery = { _id: new ObjectId(req.params.id) };
   db_connect
-    .collection("penjualan")
+    .collection("beliBahan")
     .deleteOne(myquery, function (err, result) {
       if (err) throw err;
-      console.log("penjualan berhasil dihapus");
+      console.log("beli bahan berhasil dihapus");
       res.json(result);
     })
     .then((data) => {
-      console.log("penjualan berhasil dihapus");
+      console.log("beli bahan berhasil dihapus");
       res.json({
-        message: "penjualan berhasil dihapus",
+        message: "beli bahan berhasil dihapus",
         data: data,
       });
     });

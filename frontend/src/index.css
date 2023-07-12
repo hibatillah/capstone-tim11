@@ -4,72 +4,71 @@
 
 @layer base {
   body {
-    @apply bg-primary
+    @apply bg-primary;
   }
   h1 {
-    @apply text-2xl font-bold text-blue-900
+    @apply text-2xl font-bold text-blue-900;
   }
   h2 {
-    @apply text-xl font-semibold text-blue-900
+    @apply text-xl font-semibold text-blue-900;
   }
   h3 {
-    @apply text-lg font-medium text-blue-800
+    @apply text-lg font-medium text-blue-800;
   }
   h4 {
-    @apply text-base text-blue-800
+    @apply text-base text-blue-800;
   }
   p {
-    @apply text-gray-500
+    @apply text-gray-500;
   }
   main {
-    @apply h-[calc(100vh-65px)] p-6 overflow-y-scroll
+    @apply h-[calc(100vh-65px)] p-6 overflow-y-scroll;
   }
   label {
-    @apply select-none
+    @apply select-none;
   }
   table {
-    @apply table-auto w-full mt-3
+    @apply table-auto w-full mt-3;
   }
-  table
-  thead
-  th {
-    @apply text-left font-medium text-gray-700 pb-3
+  table thead th {
+    @apply text-left font-medium text-gray-700 pb-3 border-b border-slate-400;
   }
-  table
-  tbody
-  td {
-    @apply text-gray-600 py-2
+  table tbody td {
+    @apply text-gray-500 py-3;
+  }
+  table tr {
+    @apply text-gray-500
   }
   *::-webkit-scrollbar {
     @apply w-2;
   }
   select {
-    @apply cursor-pointer
+    @apply cursor-pointer;
   }
   input {
-    @apply focus:outline-none
+    @apply focus:outline-none;
   }
 }
 
 @layer components {
   #search-box:has(input:focus) {
-    @apply ring-1 ring-blue-600
+    @apply ring-1 ring-blue-600;
   }
   .card {
-    @apply p-5 rounded-md bg-white shadow-md
+    @apply p-5 rounded-md bg-white shadow-md;
   }
   .btn {
-    @apply px-4 py-2 rounded-md  font-semibold
+    @apply px-4 py-2 rounded-md  font-semibold;
   }
   .btn-primary {
     @apply bg-blue-500 text-white active:ring-1 active:ring-blue-600
-    active:ring-offset-2
+    active:ring-offset-2;
   }
   .btn-secondary {
     @apply bg-inherit text-blue-500 border border-blue-500 active:ring-1 active:ring-blue-600
-    active:ring-offset-2
+    active:ring-offset-2;
   }
   .form {
-    @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600
+    @apply px-3 py-2 bg-inherit rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-600;
   }
 }
