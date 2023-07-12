@@ -1,16 +1,23 @@
 import React from "react";
 import { formatRupiah } from "../../components/format";
 import { brickCinnamon, darkWine } from "../../assets/img";
+import { GetData } from "../../components/api";
+
+const Penjualan = () => {
+  const { users } = GetData("http://localhost:5000/penjualan");
+  console.log(users);
+  return users;
+};
 
 const Report = () => {
-  const penjualan = []
+  const dataPenjualan = Penjualan()
 
   return (
     <>
       <h1>Report</h1>
       <div className="mt-5 space-y-6">
-        <h2>Product Viewed Report</h2>
         <div className="card">
+        <h3>Product Viewed Report</h3>
           <table>
             <thead>
               <tr>
@@ -53,26 +60,26 @@ const Report = () => {
             </tbody>
           </table>
         </div>
-        <div className="card">
+        <div className="card h-[400px]">
           <h3>Sales Report</h3>
           <table>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>No Orders</th>
-                <th>Product Sold</th>
-                <th>Price</th>
+                <th>Tanggal Waktu</th>
+                <th>Produk</th>
+                <th>Jumlah</th>
                 <th>Total</th>
+                <th>Pembeli</th>
               </tr>
             </thead>
             <tbody>
-              {penjualan.map((item, i) => (
+              {dataPenjualan?.data?.map((item, i) => (
                 <tr key={i}>
-                  <td>{item.datetime ?? '-'}</td>
-                  <td>{item.order ?? '-'}</td>
-                  <td>{item.sold ?? 0}</td>
-                  <td>{formatRupiah(item.price) ?? 0}</td>
+                  <td>{item.tanggal ?? '-'}</td>
+                  <td>{item.produk ?? '-'}</td>
+                  <td>{item.jumlah ?? 0}</td>
                   <td>{formatRupiah(item.total) ?? 0}</td>
+                  <td>{item.pembeli ?? 0}</td>
                 </tr>
               ))}
             </tbody>

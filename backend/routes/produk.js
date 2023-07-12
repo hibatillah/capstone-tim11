@@ -53,8 +53,6 @@ recordRoutes.route("/produk/add").post(function (req, res) {
     warna: req.body.warna,
     berat: req.body.berat,
     stok: req.body.stok,
-    tanggalProduksi: req.body.tanggalProduksi,
-    tanggalExpire: req.body.tanggalExpire,
   };
   db_connect
     .collection("produk")

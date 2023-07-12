@@ -1,7 +1,7 @@
 import React from "react";
 
 const BahanBaku = () => {
-    const data = []
+  const data = [];
   return (
     <div>
       <h1>Bahan Baku</h1>
@@ -24,31 +24,30 @@ const BahanBaku = () => {
             </svg>
           </div>
           <input
-            type="text"
+            type="search"
             placeholder="Cari"
             className=" ml-3 bg-transparent"
           />
         </div>
         <div className="mt-5 ml-10">
-            <table className="table-auto w-full">
+          <table className="table-auto w-full">
             <thead>
-                <tr>
-                <th>ID_BahanBakuk</th>
-                <th>Gambar</th>
+              <tr>
+                <th>#</th>
                 <th>Nama</th>
                 <th>Stock Tersedia</th>
-                </tr>
+              </tr>
             </thead>
             <tbody>
-                {data?.map((item) => (
+              {data?.map((item) => (
                 <tr>
-                    <td>{item.name ?? "-"}</td>
-                    <td>{item.price ?? "-"}</td>
-                    <td>{item.amount ?? 0}</td>
+                  <td>{item.name ?? "-"}</td>
+                  <td>{item.price ?? "-"}</td>
+                  <td>{item.amount ?? 0}</td>
                 </tr>
-                )) ?? <tr>Produk Tidak tersedia</tr>}
+              )) ?? <tr>Produk Tidak tersedia</tr>}
             </tbody>
-            </table>
+          </table>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { formatRupiah } from "../../components/format";
 import { cart, people, usd } from "../../assets/icons";
 import { brickCinnamon, darkWine } from "../../assets/img";
+import { GetData } from "../../components/api";
 
 const ScoreCard = () => {
   return (
@@ -72,8 +73,14 @@ const Status = ({ bg, title }) => {
   );
 };
 
+const Penjualan = () => {
+  const { users } = GetData("http://localhost:5000/penjualan");
+  console.log(users);
+  return users;
+};
+
 const DashboardAdmin = () => {
-  const penjualan = [];
+  const penjualan = Penjualan();
 
   return (
     <>
@@ -97,12 +104,12 @@ const DashboardAdmin = () => {
                 </tr>
               </thead>
               <tbody>
-                {penjualan?.map((item, i) => (
+                {penjualan?.data?.map((item, i) => (
                   <tr key={i}>
                     <td>{item._id ?? "-"}</td>
                     <td>{item.pembeli ?? "-"}</td>
-                    <td>{item.namaProduk ?? "-"}</td>
-                    <td>{formatRupiah(item.harga) ?? 0}</td>
+                    <td>{item.produk ?? "-"}</td>
+                    <td>{formatRupiah(item.total) ?? 0}</td>
                     <td>
                       {item.status === "approved" ? (
                         <Status bg="green" title={item.status} />
@@ -163,11 +170,11 @@ const DashboardAdmin = () => {
           </div>
         </div>
         <div className="col-span-1 space-y-6">
-          <div className="card min-h-[300px]">
+          <div className="card h-[400px]">
             <h3>Stock Product</h3>
             <div className=""></div>
           </div>
-          <div className="card min-h-[300px]">
+          <div className="card h-[400px]">
             <h3>Stock Product</h3>
             <div className=""></div>
           </div>

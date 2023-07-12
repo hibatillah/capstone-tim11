@@ -31,10 +31,10 @@
     @apply table-auto w-full mt-3;
   }
   table thead th {
-    @apply text-left font-medium text-gray-700 pb-3 border-b border-slate-400;
+    @apply text-left font-semibold text-gray-700 pb-3 border-b border-slate-400;
   }
   table tbody td {
-    @apply text-gray-500 py-3;
+    @apply text-gray-600 py-3;
   }
   table tr {
     @apply text-gray-500
