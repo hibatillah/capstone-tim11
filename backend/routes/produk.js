@@ -52,6 +52,7 @@ recordRoutes.route("/produk/add").post(function (req, res) {
     rating: req.body.rating,
     harga: req.body.harga,
     stok: req.body.stok,
+    komposisi: req.body.komposisi,
   };
   db_connect
     .collection("produk")
@@ -79,6 +80,7 @@ recordRoutes.route("/produk/update/:id").put(function (req, res) {
       rating: req.body.rating,
       harga: req.body.harga,
       stok: req.body.stok,
+      komposisi: req.body.komposisi,
     },
   };
   db_connect

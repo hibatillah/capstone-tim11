@@ -9,17 +9,24 @@ const Products = () => {
   return users;
 };
 
-const Editproduct = () => {
-  let location = useLocation()
-  const navigate = useNavigate();
-  const getID = location.pathname.split("/")[2]
-  const dataProducts = Products();
-  const getProduct = dataProducts?.data?.find(item => item._id === getID)
+const Bahan = () => {
+  const { users } = GetData("http://localhost:5000/bahanbaku");
+  console.log(users);
+  return users;
+};
 
-  const [nama, setNama] = React.useState(getProduct.nama)
-  const [harga, setHarga] = React.useState(getProduct.harga)
-  const [stok, setStok] = React.useState(getProduct.stok)
-  const [rating, setRating] = React.useState(getProduct.rating)
+const Editproduct = () => {
+  let location = useLocation();
+  const navigate = useNavigate();
+  const getID = location.pathname.split("/")[2];
+  const dataProducts = Products();
+  const dataBahan = Bahan();
+  const getProduct = dataProducts?.data?.find((item) => item._id === getID);
+
+  const [nama, setNama] = React.useState(getProduct.nama);
+  const [harga, setHarga] = React.useState(getProduct.harga);
+  const [stok, setStok] = React.useState(getProduct.stok);
+  const [rating, setRating] = React.useState(getProduct.rating);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,19 +36,45 @@ const Editproduct = () => {
       stok: parseInt(stok),
       rating: parseInt(rating),
       harga: parseInt(harga),
+      komposisi: getProduct.komposisi,
     };
 
+    const range =
+      parseInt(data.stok) - parseInt(getProduct.stok);
+
     axios
-      .put(`http://localhost:5000/produk/update/${getID}`, data)
+      .put(`http://localhost:5000/produk/update/${getProduct._id}`, data)
       .then((res) => {
         console.log(res);
+
+        getProduct.komposisi?.map((el) => {
+          dataBahan?.data?.map((item) => {
+            if (item.nama.toLowerCase() === el[0].toLowerCase()) {
+              axios
+                .put(`http://localhost:5000/bahanbaku/update/${item._id}`, {
+                  nama: item.nama,
+                  tersedia:
+                    parseInt(item.tersedia) - parseInt(el[1]) * parseInt(range),
+                  minimum: item.minimum,
+                  supplier: item.supplier,
+                })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          });
+        });
         event.target.reset();
-        alert('Produk berhasil diubah')
-        navigate('/product')
+        alert("Product updated");
+        navigate("/product");
       })
       .catch((err) => {
+        alert("Product fail to update");
         console.error(err);
-      })
+      });
   };
 
   return (
@@ -59,7 +92,7 @@ const Editproduct = () => {
               value={nama}
               onChange={(e) => setNama(e.target.value)}
               required
-              />
+            />
             <input
               type="text"
               className="px-4 py-2 border-2 w-full rounded-lg"
@@ -69,7 +102,7 @@ const Editproduct = () => {
               value={harga}
               onChange={(e) => setHarga(e.target.value)}
               required
-              />
+            />
             <input
               type="text"
               className="px-4 py-2 border-2 w-full rounded-lg"
