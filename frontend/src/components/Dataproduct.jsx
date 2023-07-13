@@ -20,7 +20,7 @@ const Product = () => {
   return (
     <>
       <h1>Products</h1>
-      <div className="mt-5 card">
+      <div className="mt-5">
         <table className="mt-5">
           <thead>
             <tr>

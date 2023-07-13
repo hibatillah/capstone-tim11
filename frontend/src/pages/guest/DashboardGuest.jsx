@@ -12,7 +12,7 @@ const DashboardGuest = () => {
   return (
     <>
       <h1>Dashboard</h1>
-      <div className="mt-5 w-full h-full grid grid-cols-3 gap-6 place-items-stretch">
+      <div className="mt-5 w-full h-full grid grid-cols-2 gap-6 place-items-stretch">
         {/* top selling */}
         <div className="col-span-2 col-start-1 card">
           <h3 className="text-blue-700">Top Selling</h3>
@@ -40,10 +40,6 @@ const DashboardGuest = () => {
               </tr>
             </tbody>
           </table>
-        </div>
-        {/* grafik */}
-        <div className="col-span-1 row-span-2 col-start-3 card">
-          <h3 className="text-blue-700">Top Selling</h3>
         </div>
         {/* stok produk */}
         <div className="col-span-2 col-start-1 card">

@@ -6,7 +6,7 @@ const DashboardSupplier = () => {
   return (
     <>
       <h1>DashBoard</h1>
-      <div className="grid grid-cols-3 gap-6 mt-5">
+      <div className="grid grid-cols-2 gap-6 mt-5">
         <div className="col-span-2 space-y-6">
           <div className="card">
             <h3>Top Selling</h3>
@@ -88,12 +88,6 @@ const DashboardSupplier = () => {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-        <div className="col-span-1">
-          <div className="card min-h-[300px]">
-            <h3>Top Selling</h3>
-            <div className=""></div>
           </div>
         </div>
       </div>
