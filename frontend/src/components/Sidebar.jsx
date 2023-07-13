@@ -18,6 +18,7 @@ const Sidebar = ({ user, handleLogin, handleUser }) => {
       ["/report", "Report"],
       ["/product", "Product"],
       ["/bahanbaku", "Bahan Baku"],
+      ["/pesanan", "Pesanan"],
     ],
     supplier: [
       ["/", "Dashboard"],
@@ -27,6 +28,7 @@ const Sidebar = ({ user, handleLogin, handleUser }) => {
     guest: [
       ["/", "Dashboard"],
       ["/ordercustomer", "Order"],
+      ["/history", "History"],
       ["/detail", "Detail"],
       ["/about", "About"],
     ],
@@ -75,7 +77,7 @@ const Sidebar = ({ user, handleLogin, handleUser }) => {
                       case "Bahan Baku":
                         return <BahanBakuIcon />;
                       default:
-                        return null;
+                        return <OrderIcon />;
                     }
                   })()
                 : user.role === "supplier"
@@ -100,7 +102,7 @@ const Sidebar = ({ user, handleLogin, handleUser }) => {
                       case "About":
                         return <UserIcon />;
                       default:
-                        return null;
+                        return <OrderIcon />;
                     }
                   })()}
 

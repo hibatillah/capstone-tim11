@@ -1,28 +1,21 @@
-import React from "react";
-import { GetData } from "../../components/api";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { formatRupiah } from '../../components/format';
+import { GetData } from '../../components/api';
 
-const BahanBaku = () => {
-  const Bahan = () => {
-    const { users } = GetData("http://localhost:5000/bahanbaku");
+const History = () => {
+  const Penjualan = () => {
+    const { users } = GetData("http://localhost:5000/penjualan");
     console.log(users);
     return users;
   };
-  const databahanbaku = Bahan();
-  console.log({ databahanbaku });
-  
+  const dataPenjualan = Penjualan();
+  console.log({ dataPenjualan });
+  const data = dataPenjualan?.data?.filter((item) => item.status === "selesai");
+
   return (
     <div>
-      <h1>Bahan Baku</h1>
+      <h1>Pesanan Guest</h1>
       <div className="mt-5 card min-h-[300px]">
-        <div className="flex gap-5 justify-end ">
-          <Link
-            className="bg-red-400 text-white rounded-lg px-4 py-2"
-            to={"/pesanbahanbaku"}
-          >
-            Pesan Bahan Baku
-          </Link>
-        </div>
         <div className="flex bg-slate-100 w-72 items-center py-2 rounded-lg">
           <div className="stroke-slate-500">
             <svg
@@ -46,25 +39,31 @@ const BahanBaku = () => {
             className=" ml-3 bg-transparent"
           />
         </div>
-        <div className="mt-5 ml-10">
+        <div className="mt-5">
           <table className="table-auto w-full">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nama</th>
-                <th>Stock Tersedia</th>
-                <th>Minimum</th>
-                <th>Supplier</th>
+                <th>Tanggal Waktu</th>
+                <th>Produk</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+                <th>Pembayaran</th>
+                <th>Pembeli</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {databahanbaku?.data?.map((item, i) => (
+              {data?.map((item, i) => (
                 <tr>
                   <td>{i}</td>
-                  <td>{item.nama ?? "-"}</td>
-                  <td>{item.tersedia ?? "-"}</td>
-                  <td>{item.minimum ?? 0}</td>
-                  <td>{item.supplier ?? 0}</td>
+                  <td>{item.datetime ?? "-"}</td>
+                  <td>{item.produk ?? "-"}</td>
+                  <td>{item.jumlah ?? 0}</td>
+                  <td>{formatRupiah(item.total) ?? 0}</td>
+                  <td>{item.pembayaran ?? "-  "}</td>
+                  <td>{item.pembeli ?? "-"}</td>
+                  <td>{item.status ?? "-"}</td>
                 </tr>
               )) ?? <tr>Produk Tidak tersedia</tr>}
             </tbody>
@@ -73,6 +72,6 @@ const BahanBaku = () => {
       </div>
     </div>
   );
-};
+}
 
-export default BahanBaku;
+export default History

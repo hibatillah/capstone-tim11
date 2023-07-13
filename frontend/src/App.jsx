@@ -6,10 +6,10 @@ import {
   Order,
   Report,
   Product,
-  AddProduct,
+  Pesanan,
 } from "./pages/admin";
 import { DashboardSupplier } from "./pages/supplier";
-import { DashboardGuest, Detail, About } from "./pages/guest";
+import { DashboardGuest, Detail, About, History } from "./pages/guest";
 import { Login } from "./pages";
 import Register from "./pages/Register";
 import BahanBaku from "./pages/admin/BahanBaku";
@@ -64,6 +64,7 @@ function App() {
                     <Route path="/bahanbaku" element={<BahanBaku />} />
                     <Route path="/pesanbahanbaku" element={<Pesanbahanbaku />} />
                     <Route path="/editproduct/:id" element={<Editproduct />} />
+                    <Route path="/pesanan" element={<Pesanan />} />
                   </>
                 ) : user.role === "supplier" ? (
                   <>
@@ -74,7 +75,8 @@ function App() {
                   <>
                     <Route path="/" element={<DashboardGuest />} />
                     <Route path="/detail" element={<Detail />} />
-                    <Route path="/ordercustomer" element={<OrderGuest />} />
+                    <Route path='/history' element={<History />} />
+                    <Route path="/ordercustomer" element={<OrderGuest user={user} />} />
                     <Route path="/about" element={<About />} />
                   </>
                 )}

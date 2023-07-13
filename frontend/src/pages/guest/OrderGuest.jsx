@@ -4,6 +4,7 @@ import { Basket } from "../../components/icon";
 import { formatRupiah, currentDatetime } from "../../components/format";
 import { GetData } from "../../components/api";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Penjualan = () => {
   const { users } = GetData("http://localhost:5000/penjualan");
@@ -12,38 +13,38 @@ const Penjualan = () => {
 };
 
 const OrderGuest = ({ user }) => {
+  const navigate = useNavigate()
   const [cinnamon, setCinnamon] = React.useState(0);
   const [wine, setWine] = React.useState(0);
-  const totalBelanja = cinnamon * 64000 + wine * 65000;
-  const dataPenjualan = Penjualan();
+  const totalBelanja = cinnamon * 62300 + wine * 62300;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       produk: [
-        ["Brick Cinnamon", cinnamon, cinnamon * 64000],
-        ["Dark Wine", wine, wine * 64000],
+        ["Brick Cinnamon", cinnamon, cinnamon * 62300],
+        ["Dark Wine", wine, wine * 62300],
       ],
       jumlah: cinnamon + wine,
       total: totalBelanja,
-      tanggal: currentDatetime(),
+      datetime: currentDatetime(),
       pembayaran: e.target.pembayaran.value,
-      pembeli: user.name,
+      pembeli: user.nama,
       status: "diproses",
     };
 
     axios
       .post('http://localhost:5000/penjualan/add', data)
       .then((res) => {
-        console.log(res.data);
+        console.log('tambah',res);
         setCinnamon(0);
         setWine(0);
         alert("Pesanan berhasil dibuat");
+        navigate('/history')
       })
       .catch((err) => {
         console.log("Error: ", err);
       });
-
   };
 
   return (
@@ -52,7 +53,7 @@ const OrderGuest = ({ user }) => {
       <div className="flex mt-8 gap-5">
         <div className="card flex-none w-96 h-fit">
           <h2>Athea Beauty Brick Cinnamon</h2>
-          <p>{formatRupiah(64000)}</p>
+          <p>{formatRupiah(62300)}</p>
           <div className="mt-3 w-full h-64 rounded-lg overflow-hidden">
             <img
               src={brickCinnamon}
@@ -70,7 +71,7 @@ const OrderGuest = ({ user }) => {
         </div>
         <div className="card flex-none w-96 h-fit">
           <h2>Athea Beauty Dark Wine</h2>
-          <p>{formatRupiah(65000)}</p>
+          <p>{formatRupiah(62300)}</p>
           <div className="mt-3 w-full h-64 rounded-lg overflow-hidden">
             <img src={darkWine} alt="" className="w-full h-full object-cover" />
           </div>
@@ -94,7 +95,7 @@ const OrderGuest = ({ user }) => {
             <h4>Total Harga</h4>
             <h3>{formatRupiah(totalBelanja)}</h3>
           </div>
-          <form onClick={handleSubmit} className="mt-auto space-y-4">
+          <form onSubmit={handleSubmit} className="mt-auto space-y-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="pembayaran">Pembayaran</label>
               <select name="pembayaran" id="pembayaran" className="form">
