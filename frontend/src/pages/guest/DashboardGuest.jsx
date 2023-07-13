@@ -1,6 +1,7 @@
 import React from "react";
 import { formatRupiah } from "../../components/format";
-
+import { brickCinnamon, darkWine } from "../../assets/img/index";
+import Product from "../../components/Dataproduct";
 const DashboardGuest = () => {
   const [penjualan, setPenjualan] = React.useState();
   const totalPenjualan = 0;
@@ -18,7 +19,6 @@ const DashboardGuest = () => {
           <table>
             <thead>
               <tr>
-                <th>Preview</th>
                 <th>Product</th>
                 <th>Price</th>
                 <th>Sold</th>
@@ -26,15 +26,18 @@ const DashboardGuest = () => {
               </tr>
             </thead>
             <tbody>
-              {penjualan?.map((item, i) => (
-                <tr key={i}>
-                  <td>{gambarProduk[item.namaProduk] ?? "-"}</td>
-                  <td>{item.namaProduk ?? "-"}</td>
-                  <td>{formatRupiah(item.harga) ?? 0}</td>
-                  <td>{totalPenjualan ?? 0}</td>
-                  <td>{formatRupiah(totalPendapatan) ?? 0}</td>
-                </tr>
-              )) ?? <tr>Penjualan tidak tersedia</tr>}
+              <tr>
+                <td>Brick Cinnamon</td>
+                <td>Rp 62.300,00</td>
+                <td>500</td>
+                <td>Rp 31.150.000</td>
+              </tr>
+              <tr>
+                <td>Dark Wine</td>
+                <td>Rp 62.300,00</td>
+                <td>400</td>
+                <td>Rp 24.920.000</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -44,27 +47,7 @@ const DashboardGuest = () => {
         </div>
         {/* stok produk */}
         <div className="col-span-2 col-start-1 card">
-          <h3 className="text-blue-700">Stok Produk</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Preview</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Stock</th>
-              </tr>
-            </thead>
-            <tbody>
-              {penjualan?.map((item, i) => (
-                <tr key={i}>
-                  <td>{gambarProduk[item.nama] ?? "-"}</td>
-                  <td>{item.nama ?? "-"}</td>
-                  <td>{formatRupiah(item.harga) ?? 0}</td>
-                  <td>{item.stok ?? 0}</td>
-                </tr>
-              )) ?? <tr>Produk tidak tersedia</tr>}
-            </tbody>
-          </table>
+          <Product />
         </div>
       </div>
     </>

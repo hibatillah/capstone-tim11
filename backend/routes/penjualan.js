@@ -50,10 +50,12 @@ recordRoutes.route("/penjualan/add").post(function (req, res) {
     produk: req.body.produk,
     jumlah: req.body.jumlah,
     total: req.body.total,
-    tanggal: req.body.tanggal,
+    datetime: req.body.datetime,
     pembayaran: req.body.pembayaran,
     pembeli: req.body.pembeli,
+    pengiriman: req.body.pengiriman,
     status: req.body.status,
+    ecommerce: req.body.ecommerce,
   };
   db_connect
     .collection("penjualan")
@@ -79,10 +81,12 @@ recordRoutes.route("/penjualan/update/:id").put(function (req, res) {
       produk: req.body.produk,
       jumlah: req.body.jumlah,
       total: req.body.total,
-      tanggal: req.body.tanggal,
+      datetime: req.body.datetime,
       pembayaran: req.body.pembayaran,
       pembeli: req.body.pembeli,
+      pengiriman: req.body.pengiriman,
       status: req.body.status,
+      ecommerce: req.body.ecommerce,
     },
   };
   db_connect

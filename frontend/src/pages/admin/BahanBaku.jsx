@@ -1,11 +1,27 @@
 import React from "react";
+import { GetData } from "../../components/api";
+import { Link } from "react-router-dom";
 
 const BahanBaku = () => {
-  const data = [];
+  const Bahan = () => {
+    const { users } = GetData("http://localhost:5000/bahanbaku");
+    console.log(users);
+    return users;
+  };
+  const databahanbaku = Bahan();
+  console.log({ databahanbaku });
   return (
     <div>
       <h1>Bahan Baku</h1>
       <div className="mt-5 card min-h-[300px]">
+        <div className="flex gap-5 justify-end ">
+          <Link
+            className="bg-red-400 text-white rounded-lg px-4 py-2"
+            to={"/pesanbahanbaku"}
+          >
+            Pesan Bahan Baku
+          </Link>
+        </div>
         <div className="flex bg-slate-100 w-72 items-center py-2 rounded-lg">
           <div className="stroke-slate-500">
             <svg
@@ -36,14 +52,18 @@ const BahanBaku = () => {
                 <th>#</th>
                 <th>Nama</th>
                 <th>Stock Tersedia</th>
+                <th>Minimum</th>
+                <th>Supplier</th>
               </tr>
             </thead>
             <tbody>
-              {data?.map((item) => (
+              {databahanbaku?.data?.map((item, i) => (
                 <tr>
-                  <td>{item.name ?? "-"}</td>
-                  <td>{item.price ?? "-"}</td>
-                  <td>{item.amount ?? 0}</td>
+                  <td>{i}</td>
+                  <td>{item.nama ?? "-"}</td>
+                  <td>{item.tersedia ?? "-"}</td>
+                  <td>{item.minimum ?? 0}</td>
+                  <td>{item.supplier ?? 0}</td>
                 </tr>
               )) ?? <tr>Produk Tidak tersedia</tr>}
             </tbody>

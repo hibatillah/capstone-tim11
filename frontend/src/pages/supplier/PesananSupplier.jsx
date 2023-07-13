@@ -80,10 +80,10 @@ const PesananSupplier = () => {
                 <td>{item.bahan ?? "-"}</td>
                 <td>{item.jumlah ?? "-"}</td>
                 <td>{item.status ?? "-"}</td>
-                <td>
+                <td className="w-10 ">
                   <div
                     onClick={() => konfirmasi(item._id)}
-                    className="bg-blue-400 rounded text-white font-medium"
+                    className=" text-white bg-blue-400 rounded  font-medium px-5"
                   >
                     Konfirmasi
                   </div>

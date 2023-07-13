@@ -15,6 +15,8 @@ import Register from "./pages/Register";
 import BahanBaku from "./pages/admin/BahanBaku";
 import OrderGuest from "./pages/guest/OrderGuest";
 import PesananSupplier from "./pages/supplier/PesananSupplier";
+import Editproduct from "./pages/admin/Editproduct";
+import Pesanbahanbaku from "./pages/admin/Pesanbahanbaku";
 
 function App() {
   // login handle
@@ -60,7 +62,8 @@ function App() {
                     <Route path="/report" element={<Report />} />
                     <Route path="/product" element={<Product />} />
                     <Route path="/bahanbaku" element={<BahanBaku />} />
-                    <Route path="/product/add" element={<AddProduct />} />
+                    <Route path="/pesanbahanbaku" element={<Pesanbahanbaku />} />
+                    <Route path="/editproduct/:id" element={<Editproduct />} />
                   </>
                 ) : user.role === "supplier" ? (
                   <>

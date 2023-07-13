@@ -49,9 +49,8 @@ recordRoutes.route("/produk/add").post(function (req, res) {
   let myObj = {
     nama: req.body.nama,
     deskripsi: req.body.deskripsi,
+    rating: req.body.rating,
     harga: req.body.harga,
-    warna: req.body.warna,
-    berat: req.body.berat,
     stok: req.body.stok,
   };
   db_connect
@@ -77,12 +76,9 @@ recordRoutes.route("/produk/update/:id").put(function (req, res) {
     $set: {
       nama: req.body.nama,
       deskripsi: req.body.deskripsi,
+      rating: req.body.rating,
       harga: req.body.harga,
-      warna: req.body.warna,
-      berat: req.body.berat,
       stok: req.body.stok,
-      tanggalProduksi: req.body.tanggalProduksi,
-      tanggalExpire: req.body.tanggalExpire,
     },
   };
   db_connect

@@ -23,6 +23,8 @@ const produk = require("./routes/produk");
 const pembeli = require("./routes/pembeli");
 const penjualan = require("./routes/penjualan");
 const user = require("./routes/user");
+const bahanbaku = require("./routes/bahanbaku");
+const beliBahan = require("./routes/beliBahan");
 
 // use routes
-app.use([perusahaan, produk, pembeli, penjualan, user]);
+app.use([perusahaan, produk, pembeli, penjualan, user,bahanbaku, beliBahan]);
